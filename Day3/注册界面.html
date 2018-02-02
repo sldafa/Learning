@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <script src="jquery-3.2.1.js"></script>
+    <style>
+        .email{
+            position: absolute;
+            left: 150px;
+            top: 25px;
+        }
+
+        .username{
+            position: relative;
+        }
+        input :focus{
+            background-color: yellow;
+        }
+        input:blur{
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+    <label for="username">请输入注册用户名： </label>
+    <div class="username">
+        <form name="username" id="username">
+            <input type="text" name="name">
+        </form>
+        <select name="email" id="select">
+            <option value="1">@163.com</option>
+            <option value="2">@126.com</option>
+        </select>
+    </div>
+    <br>
+    <br>
+
+    <label for="password">请设定密码： </label>
+    <div class="password">
+        <form name="password" id="password">
+            <input type="password" name="password">
+        </form>
+    </div>
+    <div>
+
+    </div>
+
+    <script>
+        $(function () {
+
+        });
+    </script>
+</body>
+</html>

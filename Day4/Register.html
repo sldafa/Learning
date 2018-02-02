@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <script src="jquery-3.2.1.js"></script>
+    <script src="Dialog.js"></script>
+    <script src="layui/layui.all.js"></script>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.5em;
+        }
+        #validateCode{
+            cursor: pointer;
+        }
+
+        .currentInput{
+            background-color: burlywood;
+        }
+
+        .common{
+            background-color: #cccccc;
+        }
+
+        table{
+            margin: 0 auto;
+        }
+        td{
+            vertical-align: middle;
+        }
+
+
+    </style>
+</head>
+<body>
+    <table cellpadding="15">
+    <form action="">
+        <tr>
+            <td>
+        <label for="username">用户名： </label>
+            </td>
+            <td>
+        <input type="text" name="username" id="username">
+        <br>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+        <input type="radio" name="gender" id="gender1">男
+            </td>
+            <td align="center">
+        <input type="radio" name="gender" id="gender2">女
+        <br>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+        <label for="password">密码： </label>
+            </td>
+            <td>
+        <input type="password" name="password" id="password">
+        <br>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+        <label for="passwordVa">重复输入密码： </label>
+            </td>
+            <td>
+        <input type="password" name="passwordVa" id="passwordVa">
+        <br>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+        <label for="validate">验证码： </label>
+            </td>
+            <td>
+        <input type="text" name="validate" id="validate">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+        <span id="validateCode">
+        </span>
+            </td>
+        <br>
+        </tr>
+
+        <tr>
+            <td>
+        <label for="check">同意用户协议</label>
+            </td>
+            <td>
+        <input type="checkbox" name="check" id="check">
+        <br>
+            </td>
+        <tr>
+        <td>
+        <input type="submit" value="提交" style="height: 30px;width: 12em;">
+        </td>
+        </tr>
+    </form>
+    </table>
+
+
+    <script>
+        //生成验证码的过程
+
+        //生成一个指定范围的随机数
+        function getRandomNumber(A, B) {
+            var num = parseInt(Math.random() * (B - A + 1) + A);
+            return num;
+        }
+        
+        //生成一个随机字母
+        function getRandomLetter() {
+            //ASCII :65 - 90
+            var num = getRandomNumber(65, 90);
+            var letter = String.fromCharCode(num);
+            return letter;
+        }
+
+        //生成验证码
+        function getRandomValidate(count) {
+            count = Math.abs(count);
+            var str = '';
+            for(var i = 0; i < count; i++)
+            {
+                var type = getRandomNumber(0, 1);
+                if (type === 0 )
+                {
+                    str += getRandomLetter();
+                }
+                else {
+                    str += getRandomNumber(0 ,9);
+                }
+            }
+            return str;
+        }
+
+        //使用生成之后的验证码
+        var validateNumber = getRandomValidate(5);
+        $('#validateCode').html(validateNumber).click(function () {
+            var newCode = getRandomValidate(5);
+            $(this).html(newCode);
+        });
+
+        //-------------------------------------分割线--------------------------------------//
+
+        //用户名验证
+        $("input[name='username']").focus(function () {
+            $(this).css('backgroundColor','burlywood');
+        }).blur(function () {
+            $(this).css('backgroundColor','white');
+            //整理用户名
+            var username = $.trim($(this).val());
+            if(username === '')
+            {
+                alert('用户名不能为空！');
+                return;
+            }
+
+        });
+
+        $("input[name='password']").focus(function () {
+            $(this).css('backgroundColor','burlywood');
+        }).blur(function () {
+            $(this).css('backgroundColor','white');
+            var password = $.trim($(this).val());
+            if(password === '')
+            {
+                alert('密码不能为空！');
+                return;
+            }
+
+        });
+
+        $("input[name='validate']").focus(function () {
+            $(this).css('backgroundColor','burlywood');
+        }).blur(function () {
+            $(this).css('backgroundColor','white');
+            var validate = $.trim($(this).val());
+            if(validate === '')
+            {
+                alert('验证码不能为空！');
+                return;
+            }
+
+            //比照验证码
+            var temp = $('#validateCode').html();
+            var current_value = $(this).val();
+            if(temp !==  current_value.toUpperCase())
+            {
+                alert('请输入正确的验证码！');
+            }
+
+
+        });
+
+      //提交按钮
+        $('input[type=submit]').click(function () {
+            //判断CheckBox
+            var status = $('input[type=checkbox]').is(':checked');
+            if(!status)
+            {
+                dialog.error('请确认用户协议');
+                return;
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件捕获</title>
+    <style>
+        .out{
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="out">
+    <div class="middle">
+        <div class="in">
+        </div>
+    </div>
+</div>
+
+<script>
+    var out_div = document.getElementsByClassName('out')[0];
+    var middle_div = document.getElementsByClassName('middle')[0];
+    var in_div = document.getElementsByClassName('in')[0];
+
+    out_div.onclick = function () {
+      console.log('out');
+    },true);
+
+    middle_div.onclick = function () {
+        console.log('middle');
+    };
+
+    in_div.onclick = function () {
+        console.log('in');
+
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="Swiper/css/swiper.css">
+    <script src="jquery-3.2.1.js"></script>
+    <script src="Swiper/js/swiper.jquery.min.js"></script>
+    <script src="Swiper/js/swiper.jquery.js"></script>
+    <style>
+        .swiper-container{
+            width: 590px;
+            height: 340px;
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="1.jpg" alt="1.jpg">
+            </div>
+            <div class="swiper-slide">
+                <img src="2.jpg" alt="2.jpg">
+            </div>
+            <div class="swiper-slide">
+                <img src="3.jpg" alt="3.jpg">
+            </div>
+            <div class="swiper-slide">
+                <img src="4.jpg" alt="4.jpg">
+            </div>
+            <div class="swiper-slide">
+                <img src="5.jpg" alt="5.jpg">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev "></div>
+        <div class="swiper-button-next "></div>
+    </div>
+
+    <script>
+        var swiper = new Swiper('.swiper-container',{
+            direction : 'horizontal',
+            loop : true,
+            effect : 'coverflow',
+            autoplay : 3000,
+            pagination : '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            paginationClickable : true
+        });
+    </script>
+</body>
+</html>

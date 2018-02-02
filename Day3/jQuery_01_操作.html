@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.2.1.js"></script>
+    <title>Title</title>
+    <style type="text/css">
+        .myDiv {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 100px;
+            top: 100px;
+            background-color: dodgerblue;
+        }
+        .teststyle{
+            color: forestgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="myDiv">
+        <a href="http://www.sina.com">新浪</a>
+        <button>Click</button>
+    </div>
+    <script>
+//      //text()
+//        $(".myDiv").text('This is a text');
+//        $(".myDiv").text(function (i,oldtext) {
+//
+//        });
+//
+//        $(".myDiv".html("<p style='color:red'>123</p>"));
+//        $("button").click(function () {
+//            $('p').toggleClass("teststyle");
+//        });
+
+        //旋转
+
+        var deg = 0;
+        var speed = 1;
+        setInterval(function () {
+            speed += speed;
+            deg += speed;
+            $('.myDiv').css({
+                transform : 'rotateZ('+ deg +'deg)'
+            })
+        },100)
+    </script>
+
+</body>
+</html>

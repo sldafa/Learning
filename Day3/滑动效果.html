@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slide</title>
+    <style type="text/css">
+        .outer{
+            position: absolute;
+            width:400px;
+            height: 40px;
+            top: 50px;
+            left: 50px;
+            background-color: #cccccc;
+        }
+
+        .inner{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: 50px;
+            left: 50px;
+            background-color: darkorange;
+
+
+        }
+    </style>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+    <div class="outer"></div>
+    <div class="inner"></div>
+    <script>
+        $(function () {
+            $(document).mousemove(function () {
+                var a = $('.outer').offset().left;
+                var max = $('.outer').width() -
+                //为div添加mousedown事件
+                $("#inner").mousedown(function () {
+                    $("document").on ('mousemove',function () {
+
+                    });       });
+
+            });
+            var little_dis = window.event.x-a;
+            $(document).on('mousemove',function () {
+                var  newX = window.event.x;
+                var newLeft = newX - a - little_dis;
+
+                //  修改div的left值
+                $('.inner').css({
+                    left : newLeft + 'px'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

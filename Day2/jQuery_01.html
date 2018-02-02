@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.js"></script>
+    <style type="text/css">
+        .common {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+  <!--<div class="common"></div>-->
+
+  <form action="">
+      <label for="">Username: </label>
+      <input type="text" name="username">
+      <br>
+      <label for="">Password: </label>
+      <input type="password" name="password">
+  </form>
+  <button>Click</button>
+  <p>This is a text</p>
+
+  <script>
+//      $(function () {
+//          //hover
+//          $('.common').hover(function () {
+//              $(this).css({
+//                  backgroundColor : 'Green'
+//              });
+//          },function () {
+//              $(this).css({
+//                  backgroundColor : 'dodgerblue'
+//              });
+//          });
+//      });
+//
+//      //focus
+//      $('input').focus(function () {
+//          $(this).css({
+//              backgroundColor : '#ccc'
+//          });
+//      }).blur(function () {
+//          $(this).css({
+//              backgroundColor: 'white'
+//          });
+//      });
+      //on的使用
+      //添加单个事件
+//      $('button').on('click',function () {
+//          alert('Hello');
+//      });
+
+      //添加多个事件
+        $('button').on({
+            mouseenter : function () {
+                $(this).css({
+                    color : 'red'
+                });
+
+            },
+            mouseleave : function () {
+                $(this).css({
+                    color : 'black'
+                });
+            },
+            click : function () {
+//               $('p').toggle();
+                $('p').fadeTo('slow',0,function () {
+                    alert('disappered');
+                })
+            }
+        });
+
+  </script>
+</body>
+</html>
